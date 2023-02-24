@@ -3,25 +3,29 @@ import { Car } from "../interfaces/car.interface";
 
 const itemSchema = new Schema<Car>(
   {
+    name: {
+      type: String,
+      required: [true, "ingrese un nombre valido"],
+    },
     color: {
       type: String,
-      required: [true, "Digite un color"]
+      required: [true, "Digite un color"],
     },
     gas: {
       type: String,
       enum: ["gasoline", "electric"],
-      required: [true, "Solo puede escoger entre gasoline o electric"]
+      required: [true, "Solo puede escoger entre gasoline o electric"],
     },
     year: {
       type: Number,
-      required: [true, "Diga el año del carro"]
+      required: [true, "Diga el año del carro"],
     },
     description: {
       type: String,
     },
     price: {
       type: Number,
-      required: [true, "Diga un precio valido"]
+      required: [true, "Diga un precio valido"],
     },
   },
   {

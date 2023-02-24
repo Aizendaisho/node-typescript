@@ -7,7 +7,18 @@ const inserCart = async (item: Car) => {
 };
 
 const getAllCarts = async () =>{
- return CarModel.find()
+ return await CarModel.find();
 }
 
-export { inserCart,getAllCarts };
+const deleteCart = async (id: string) => {
+  return await CarModel.findByIdAndDelete(id);
+};
+const updateCart = async (id: string, itemCart: Car) => {
+  return await CarModel.findOneAndReplace({ _id: id }, itemCart, { new: true });
+};
+
+const findCart = async (id: string) => {
+  return await CarModel.findById(id);
+};
+
+export { inserCart, getAllCarts, deleteCart, findCart, updateCart };

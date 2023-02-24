@@ -1,5 +1,11 @@
 import {Router} from 'express';
-import { homeGet,homeDelete,homeId,homePost,homePut } from '../controllers/home';
+import {
+  homeGet,
+  homeDelete,
+  homeId,
+  homePost,
+  homePut,
+} from "../controllers/item.controller";
 
 const router = Router()
 
@@ -7,11 +13,11 @@ router.get('/home',homeGet)
 
 router.post('/home',homePost)
 
-router.put('/home',homePut)
+router.put("/home/:id", homePut);
 
-router.delete('/home',homeDelete)
+router.delete("/home/:id", homeDelete);
 
-router.put('/home/:id',homeId)
+router.get("/home/:id", homeId);
 
 
 
