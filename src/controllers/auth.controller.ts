@@ -7,15 +7,18 @@ const login = async (req: Request, res: Response) => {
     if (user === "that user dont exist") res.status(403).send(user);
     if (user === "password incorrect") res.status(403).send(user);
     if (user) res.json(user);
-  } catch (error) {}
-  // res.send("desde el login");
+  } catch (error) {
+    res.status(500).send(error)
+  } 
 };
 
 const register = async ({ body }: Request, res: Response) => {
   try {
     const registerUser = await registerNewUser(body);
     res.send(registerUser);
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).send(error)
+  }
 };
 
 export { login, register };
