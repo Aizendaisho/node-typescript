@@ -5,15 +5,22 @@ import { generateToken, verifyToken } from "../utils/jwt.handler";
 import { UserAuthInterface } from "../interfaces/userAuth.interface";
 
 const registerNewUser = async ({ email, password, name }: UserReady) => {
-  const checkUser = await UserModel.findOne({ email: email });
-  if (checkUser) return "Is already registered";
-  const passHash = await encrypt(password);
-  const registerNewUser = await UserModel.create({
-    email,
-    password: passHash,
-    name,
-  });
-  return registerNewUser;
+  try {
+    
+    const checkUser = await UserModel.findOne({ email: email });
+    if (checkUser) return "Is already registered";
+    const passHash = await encrypt(password);
+    const registerNewUser = await UserModel.create({
+      email,
+      password: passHash,
+      name,
+    });
+    return registerNewUser;
+  } catch (error) {
+    
+    console.log(error)
+    
+  }
 };
 
 const loginUser = async ({ email, password }: UserAuthInterface) => {

@@ -7,6 +7,8 @@ const generateToken = (id: string) => {
   return jwt;
 };
 
-const verifyToken = async () => {};
+const verifyToken = async (token: string) => {
+  return await verify(token,JWT_SECRET)
+};
 
 export { generateToken, verifyToken };
