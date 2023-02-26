@@ -32,4 +32,8 @@ const loginUser = async ({ email, password }: UserAuthInterface) => {
   return { user: checkUser.name, token };
 };
 
-export { loginUser, registerNewUser };
+const getAllUsers = async () => {
+  return await UserModel.find();
+};
+
+export { loginUser, registerNewUser, getAllUsers };
